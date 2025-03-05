@@ -1,7 +1,7 @@
 import { Outlet } from "react-router";
 
 export const handle = {
-  breadcrumb: "section 1",
+  breadcrumb: "Item details",
 };
 
 export default function SectionOutlet() {

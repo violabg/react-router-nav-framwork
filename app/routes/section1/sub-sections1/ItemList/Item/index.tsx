@@ -16,10 +16,6 @@ export async function clientLoader({ params }: Route.ClientLoaderArgs) {
   return { item: result };
 }
 
-export const handle = {
-  breadcrumb: "Item details",
-};
-
 export default function Item({ loaderData }: Route.ComponentProps) {
   return (
     <div className="p-4 text-center">

@@ -23,16 +23,9 @@ const Breadcrumbs = () => {
         ? match.handle.breadcrumb(match.params)
         : match.handle.breadcrumb;
 
-    const path =
-      typeof match.handle.path === "function"
-        ? match.handle.path(match.params)
-        : match.handle.path;
-
     return {
       breadcrumb,
-      href: `${path ?? match.pathname}${
-        isTheIndexBeforeLast ? searchParams : ""
-      }`, // Append search params to the URL
+      href: `${match.pathname}${isTheIndexBeforeLast ? searchParams : ""}`, // Append search params to the URL
       // state: currentState // Keep the state during navigation
     };
   });
