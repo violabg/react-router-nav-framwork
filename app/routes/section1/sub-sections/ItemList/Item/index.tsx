@@ -1,14 +1,16 @@
-import type { Route } from ".react-router/types/app/routes/section1/sub-sections/ItemList/Item/+types";
 import { Suspense } from "react";
 import { Await, Link } from "react-router";
+import type { Item } from "~/routes/types";
+import type { Route } from "./+types";
 
 export async function clientLoader({ params }: Route.ClientLoaderArgs) {
   const result = new Promise((resolve) => {
+    const item: Item = {
+      label: `Item ${params.id}`,
+      id: params.id,
+    };
     setTimeout(() => {
-      resolve({
-        label: `Item ${params.id}`,
-        id: params.id,
-      });
+      resolve(item);
     }, 2000);
   });
   return { item: result };
