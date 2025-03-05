@@ -4,7 +4,7 @@ import type { Item } from "~/routes/types";
 import type { Route } from "./+types";
 
 export async function clientLoader() {
-  const result = new Promise((resolve) => {
+  const result = new Promise<Item[]>((resolve) => {
     const items: Item[] = [
       {
         label: "Item 1",
