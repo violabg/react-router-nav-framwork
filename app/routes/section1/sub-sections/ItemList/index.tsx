@@ -1,5 +1,6 @@
 import { Suspense } from "react";
-import { Await, Link, useLoaderData } from "react-router";
+import { Await, Link } from "react-router";
+import type { Route } from "../+types";
 
 export async function clientLoader() {
   const result = new Promise((resolve) => {
@@ -23,25 +24,18 @@ export async function clientLoader() {
   return { items: result };
 }
 
-export const handle = {
-  breadcrumb: "sub section 1",
-};
-
-export default function ItemList() {
-  const loaderData = useLoaderData();
+export default function ItemList({ loaderData }: Route.ComponentProps) {
   return (
     <div className="p-4 text-center">
       <h1 className="text-2xl">sub section 1 list</h1>
       <Suspense fallback={<div>loading items</div>}>
-        <Await resolve={loaderData.items}>
+        <Await resolve={loaderData?.items}>
           {(value) => (
             <ul>
               {value.map((item: any) => {
                 return (
                   <li key={item.id}>
-                    <Link to={`/section1/sub-section1/item/${item.id}`}>
-                      {item.label}
-                    </Link>
+                    <Link to={`item/${item.id}`}>{item.label}</Link>
                   </li>
                 );
               })}

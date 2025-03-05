@@ -11,18 +11,17 @@ export default [
     route("section1", "routes/nested-layout/index.tsx", [
       index("routes/section1/sub-sections/index.tsx"),
       layout("routes/section1/layout.tsx", [
-        route(
-          "sub-section1",
-          "routes/section1/sub-sections/ItemList/index.tsx",
-          [
-            layout("routes/section1/sub-sections/ItemList/layout.tsx", [
-              route(
-                "item/:id",
-                "routes/section1/sub-sections/ItemList/Item/index.tsx"
-              ),
-            ]),
-          ]
-        ),
+        // Fix: Nest item/:id directly under sub-section1 with ItemList layout
+        layout("routes/section1/sub-sections/ItemList/layout.tsx", [
+          route(
+            "sub-section1",
+            "routes/section1/sub-sections/ItemList/index.tsx"
+          ),
+          route(
+            "sub-section1/item/:id",
+            "routes/section1/sub-sections/ItemList/Item/index.tsx"
+          ),
+        ]),
         route("sub-section2", "routes/section1/sub-sections2/index.tsx"),
       ]),
     ]),
