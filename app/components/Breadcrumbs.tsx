@@ -3,7 +3,7 @@ import { Link, useLocation, useMatches } from "react-router";
 const Breadcrumbs = () => {
   const matches = useMatches();
   const location = useLocation();
-  console.log("matches :>> ", matches);
+
   // Extract current search params (query strings) and state
   const searchParams =
     location.search === ""

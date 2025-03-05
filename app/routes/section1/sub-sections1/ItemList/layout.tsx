@@ -5,9 +5,5 @@ export const handle = {
 };
 
 export default function SectionOutlet() {
-  return (
-    <>
-      <Outlet />
-    </>
-  );
+  return <Outlet />;
 }
