@@ -6,8 +6,8 @@ export const handle = {
 
 export default function SectionOutlet() {
   return (
-    <div>
+    <>
       <Outlet />
-    </div>
+    </>
   );
 }
